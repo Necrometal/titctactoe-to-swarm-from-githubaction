@@ -10,6 +10,13 @@ jobs:
   echo:
     runs-on: ubuntu-latest
 
+    env:
+      HOST: ${{ secrets.YOUR_HOST }}
+      USERNAME: ${{ secrets.YOUR_USERNAME }}
+      PASSWORD: ${{ secrets.YOUR_PASSWORD }}
+      KEY: ${{ secrets.YOUR_KEY }}
+      PORT: ${{ secrets.YOUR_PORT }}
+
     steps:
       # - name: Checkout code
       #   uses: actions/checkout@v2
@@ -24,4 +31,4 @@ jobs:
           password: ${{ secrets.KEY_PASSWORD }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: echo ${{ secrets.HOST }}
+          script: echo "host: $HOST"
