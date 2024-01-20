@@ -27,6 +27,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: | 
             echo 'deploy service on swarm ...'
-            ls
-            chmod +x ./swarm-service.sh
-            ./swarm-service.sh
+      - name: run script
+        run: |
+          ls
