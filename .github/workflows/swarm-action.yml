@@ -10,25 +10,18 @@ jobs:
   echo:
     runs-on: ubuntu-latest
 
-    env:
-      HOST: ${{ secrets.HOST }}
-      USERNAME: ${{ secrets.YOUR_USERNAME }}
-      PASSWORD: ${{ secrets.YOUR_PASSWORD }}
-      KEY: ${{ secrets.YOUR_KEY }}
-      PORT: ${{ secrets.YOUR_PORT }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Echo
-        run: echo 'hello $HOST' $HOST
+        run: echo 'hello world'
   
-      # - name: executing remote ssh commands using password
-      #   uses: appleboy/ssh-action@v1.0.3
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USERNAME }}
-      #     password: ${{ secrets.KEY_PASSWORD }}
-      #     key: ${{ secrets.KEY }}
-      #     port: ${{ secrets.PORT }}
-      #     script: echo $HOST
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.KEY_PASSWORD }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: ls
