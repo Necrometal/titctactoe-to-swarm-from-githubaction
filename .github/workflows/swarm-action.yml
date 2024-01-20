@@ -26,5 +26,5 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: | 
-            ls
-            echo 'ssh connect actionss'
+            echo 'try docker service command'
+            docker service ls
