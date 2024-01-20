@@ -46,8 +46,8 @@ jobs:
           port: ${{ secrets.PORT }}
           script: | 
             echo 'deploy service on swarm ...'
-            service_image=${{ env.TAG_IMAGE }}
-            service_name=${{ env.SERVICE_NAME }}
+            service_image=${{ vars.TAG_IMAGE }}
+            service_name=${{ vars.SERVICE_NAME }}
             replicas_number=3
 
             service_info=$(docker service ls --quiet --filter "name=$service_name")
