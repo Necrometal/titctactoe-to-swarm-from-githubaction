@@ -37,8 +37,6 @@ jobs:
   
       - name: update swarm service
         uses: appleboy/ssh-action@master
-        env:
-          TAG_IMAGE: ${{ secrets.TAG_IMAGE }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -48,7 +46,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: | 
             echo 'deploy service on swarm ...'
-            service_image=$TAG_IMAGE
+            service_image= ${{ secrets.TAG_IMAGE }}
             service_name="tictac"
             replicas_number=3
 
