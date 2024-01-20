@@ -29,5 +29,4 @@ jobs:
             echo 'deploy service on swarm ...'
       - name: run script
         run: |
-          cd ../../
-          ls -a
+          ls /
