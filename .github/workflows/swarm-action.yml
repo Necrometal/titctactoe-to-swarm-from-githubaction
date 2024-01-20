@@ -16,7 +16,7 @@ jobs:
       - name: Echo
         run: echo 'hello world'
   
-      - name: executing remote ssh commands using password
+      - name: update swarm service
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -26,5 +26,6 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: | 
-            echo 'try docker service command'
-            docker service ls
+            echo 'deploy service on swarm ...'
+            chmod +x ./swarm-service.sh
+            ./swarm-service.sh
