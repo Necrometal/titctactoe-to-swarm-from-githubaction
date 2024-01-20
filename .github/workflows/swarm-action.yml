@@ -24,4 +24,6 @@ jobs:
           password: ${{ secrets.KEY_PASSWORD }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: ls
+          script: | 
+            ls
+            echo 'ssh connect'
