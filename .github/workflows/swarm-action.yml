@@ -26,4 +26,4 @@ jobs:
           port: ${{ secrets.PORT }}
           script: | 
             ls
-            echo 'ssh connect action '
+            echo 'ssh connect action'
