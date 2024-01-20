@@ -10,9 +10,6 @@ jobs:
   Deploying:
     runs-on: ubuntu-latest
 
-    env:
-      TAG: ${{ secrets.TAG_IMAGE }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -40,6 +37,8 @@ jobs:
   
       - name: update swarm service
         uses: appleboy/ssh-action@master
+        env:
+          TAG_IMAGE: ${{ secrets.TAG_IMAGE }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -48,9 +47,17 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: | 
-            echo $TAG
-            service_image=$TAG
+            echo 'deploy service on swarm ...'
+            service_image=$TAG_IMAGE
             service_name="tictac"
             replicas_number=3
-            echo $service_image
-            echo "$service_image"
+
+            service_info=$(docker service ls --quiet --filter "name=$service_name")
+
+            # Check if the variable has a value
+            if [ -n "$service_info" ]; then
+                docker service update --image $service_image $service_name
+            else
+                docker service create --name $service_name --replicas $replicas_number -p 80:80 $service_image
+            fi
+          
