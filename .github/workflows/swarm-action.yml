@@ -49,8 +49,9 @@ jobs:
           port: ${{ secrets.PORT }}
           script: | 
             echo 'deploy service on swarm ...'
+            echo $TAG
             service_image=$TAG
             service_name="tictac"
             replicas_number=3
-
             echo $service_image
+            echo "$service_image"
