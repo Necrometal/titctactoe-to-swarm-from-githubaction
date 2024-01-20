@@ -31,4 +31,4 @@ jobs:
           password: ${{ secrets.KEY_PASSWORD }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: echo "host: $HOST"
+          script: echo 'host $HOST'
