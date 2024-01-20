@@ -18,17 +18,17 @@ jobs:
       PORT: ${{ secrets.YOUR_PORT }}
 
     steps:
-      # - name: Checkout code
-      #   uses: actions/checkout@v2
-      # - name: Echo
-      #   run: echo 'hello world'
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Echo
+        run: echo 'hello $HOST'
   
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.KEY_PASSWORD }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          script: echo $HOST
+      # - name: executing remote ssh commands using password
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     password: ${{ secrets.KEY_PASSWORD }}
+      #     key: ${{ secrets.KEY }}
+      #     port: ${{ secrets.PORT }}
+      #     script: echo $HOST
