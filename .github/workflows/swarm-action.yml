@@ -1,17 +1,27 @@
 name: deploy-to-swarm
 on:
-    push:
-        branches:
-            - 'master'
-    pull_request:
-        branches:
-            - 'master'
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    branches:
+      - 'master'
 jobs:
-    echo:
-        runs-on: ubuntu-latest
-    
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v2
-            - name: Echo
-              run: echo 'hello world'
+  echo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Echo
+        run: echo 'hello world'
+  
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.KEY_PASSWORD }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: echo 'hello world'
