@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Echo
-        run: echo 'hello world'
+      # - name: Checkout code
+      #   uses: actions/checkout@v2
+      # - name: Echo
+      #   run: echo 'hello world'
   
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.3
