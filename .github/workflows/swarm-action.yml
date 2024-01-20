@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      HOST: ${{ secrets.YOUR_HOST }}
+      HOST: ${{ secrets.HOST }}
       USERNAME: ${{ secrets.YOUR_USERNAME }}
       PASSWORD: ${{ secrets.YOUR_PASSWORD }}
       KEY: ${{ secrets.YOUR_KEY }}
@@ -21,7 +21,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Echo
-        run: echo 'hello $HOST'
+        run: echo 'hello $HOST' $HOST
   
       # - name: executing remote ssh commands using password
       #   uses: appleboy/ssh-action@v1.0.3
