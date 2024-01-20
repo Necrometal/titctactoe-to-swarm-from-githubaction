@@ -32,7 +32,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.TAG_IMAGE }}
+          tags: ${{ vars.TAG_IMAGE }}
           labels: ${{ steps.meta.outputs.labels }}
   
       - name: update swarm service
